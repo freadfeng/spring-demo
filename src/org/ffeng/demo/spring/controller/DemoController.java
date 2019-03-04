@@ -31,6 +31,7 @@ public class DemoController {
 	public Map<Object, Object> demoRequestPdf(){
 		return new HashMap<Object, Object>();
 	}
+	
 	@RequestMapping("/demoController/demoRequestView")
 	public ModelAndView demoRequestView(){
 		ModelAndView andView = new ModelAndView("index.html");
