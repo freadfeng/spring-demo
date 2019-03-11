@@ -15,38 +15,54 @@
   http://www.springframework.org/schema/mvc
   http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 
-<!-- 	
-	<mvc:view-resolvers>
-		<mvc:freemarker />
-	</mvc:view-resolvers> 
--->
-	
+	<!--  InternalResourceViewResolver -->
+	<!-- 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views"></property>
-		<property name="suffix" value=".jsp"></property>
+		<property name="prefix" value="/"></property>
+		<property name="suffix" value=""></property>
 	</bean>
-
-	<mvc:annotation-driven />
-	<mvc:resources location="/" mapping="/index.html" />
-
-	<context:component-scan base-package="org.ffeng.demo.spring.controller" />
-
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="31457280" />
-	</bean>
-	<!-- -->
-	<mvc:annotation-driven>
-		<mvc:message-converters>
-			<bean
-				class="org.springframework.http.converter.StringHttpMessageConverter" />
-			<bean
-				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-		</mvc:message-converters>
-	</mvc:annotation-driven>
-
-
-	<bean id="demoController" scope="request" class="org.ffeng.demo.spring.controller.DemoController" />
-	<!-- PDF -->
+	-->
 	
+	<!-- SimpleUrlHandlerMapping
+	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/simpleUrlHandlerMappingTest">simpleUrlHandlerMappingTestContoller</prop>
+			</props>
+		</property>
+	    <property name="urlMap">     
+	        <map>     
+	            <entry key="/base/login.htm" value-ref="loginController"/>     
+	        </map>     
+	    </property>
+	<bean id="simpleUrlHandlerMappingTestContoller" class="org.ffeng.demo.spring.controller.SimpleUrlHandlerMappingTestContoller"/>
+	</bean>
+	 -->
+	 <!-- BeanNameUrlHandlerMapping -->
+	 
+	 <!-- 
+	 <bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+	 </bean>
+	 <bean id="beanNameUrlHandlerMappingTestController" class="org.ffeng.demo.spring.controller.BeanNameUrlHandlerMappingTestController" 
+	 	name="/beanNameUrlHandlerMappingTestController"/>
+	  -->
+	 
+	 <!-- UrlBasedViewResolver -->
+	 <!-- 
+	 <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	  	<property name="prefix" value="/"></property>
+	  	<property name="suffix" value=""></property>
+	  	<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"></property>
+	  </bean>
+	  -->
+	  
+	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	  	<property name="prefix" value="/WEB-INF/views/"></property>
+	  	<property name="suffix" value=""></property>
+	  	<property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"></property>
+	  </bean>
+	  <bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	  <bean id="beanNameUrlHandlerMappingForInternalResourceViewResolverTestController" 
+	  		class="org.ffeng.demo.spring.controller.BeanNameUrlHandlerMappingForInternalResourceViewResolverTestController" 
+	 		name="/beanNameUrlHandlerMappingForInternalResourceViewResolverTestController"/>
 </beans>

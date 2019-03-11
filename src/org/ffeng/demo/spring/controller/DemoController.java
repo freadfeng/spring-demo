@@ -3,15 +3,16 @@ package org.ffeng.demo.spring.controller;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+//@RestController
+@Controller
 public class DemoController {
 	public DemoController() {
 		System.out.println("=============== DemoController ===============");
+//		throw new RuntimeException();
 	}
 	
 	@RequestMapping("/demoController/demoRequestMappingReturnMap")
@@ -22,7 +23,8 @@ public class DemoController {
 		return map;
 	}
 	
-	@GetMapping(path = "/demoController/demoGetMappingContentTypeReturnString", consumes = "application/json")
+	//@GetMapping(path = "/demoController/demoGetMappingContentTypeReturnString", consumes = "application/json")
+	@RequestMapping("/demoController/demoGetMappingContentTypeReturnString")
 	public String demoGetMappingContentTypeReturnString() {
 		return "@PostMapping(path = \"/demoController/demoGetMappingContentTypeReturnString\", consumes = \"application/json\")";
 	}

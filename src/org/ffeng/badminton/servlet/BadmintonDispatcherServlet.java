@@ -1,15 +1,17 @@
-package org.ffeng.demo.spring.servlet;
+package org.ffeng.badminton.servlet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.BeanFactoryUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.HandlerExecutionChain;
 import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.servlet.ViewResolver;
 
 @SuppressWarnings("serial")
-public class CustomizedDispatcherServlet extends DispatcherServlet {
+public class BadmintonDispatcherServlet extends DispatcherServlet {
 	/**
 	 * DispatcherServlet
 	 * HandlerMapping
@@ -22,25 +24,17 @@ public class CustomizedDispatcherServlet extends DispatcherServlet {
 	 * View
 	 * render
 	 */
-	public CustomizedDispatcherServlet() {
+	public BadmintonDispatcherServlet() {
 		super();
-		System.out.println("========== org.ffeng.demo.spring.servlet.CustomizedDispatcherServlet ==========");
+		System.out.println("========== org.ffeng.demo.spring.servlet.BadmintonDispatcherServlet ==========");
 	}
 	
 	@Override
 	protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		System.out.println("========== org.ffeng.demo.spring.servlet.CustomizedDispatcherServlet.doService() ========== ");
+		System.out.println("========== org.ffeng.demo.spring.servlet.BadmintonDispatcherServlet.doService() ========== ");
 		System.out.println(getHandlerMappings());
+		
 		super.doService(request, response);
-		System.out.println(); 
 	}
-	public static void main(String[] args) {
-		System.out.println(CustomizedDispatcherServlet.class.getName());
-	}
-	@Override
-	protected void initStrategies(ApplicationContext context) {
-		// TODO Auto-generated method stub
-		super.initStrategies(context);
-	}
-
+	
 }

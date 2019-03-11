@@ -13,14 +13,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
-  <!-- 
-  <context-param>
-  	<description>This param will be used by ContextLoaderListener to create the root web application context.</description>
-  	<param-name>contextConfigLocation</param-name>
-  	<param-value>/WEB-INF/root-context.xml</param-value>
-  </context-param>
-  -->
-  
+  <!-- demo -->
   <servlet>
   	<servlet-name>app</servlet-name>
   	<servlet-class>org.ffeng.demo.spring.servlet.CustomizedDispatcherServlet</servlet-class>
@@ -29,7 +22,7 @@
   		<param-value>/WEB-INF/app-context.xml</param-value>
   	</init-param>
   	<init-param>
-  		<param-name>dispatchTraceRequest</param-name>
+  		<param-name>throwExceptionIfNoHandlerFound</param-name>
   		<param-value>false</param-value>
   	</init-param>
   	 
@@ -39,4 +32,20 @@
   	<servlet-name>app</servlet-name>
   	<url-pattern>/app/*</url-pattern>
   </servlet-mapping>
+  
+  <!-- badminton -->
+  <servlet>
+  	<servlet-name>badminton</servlet-name>
+  	<servlet-class>org.ffeng.badminton.servlet.BadmintonDispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>/WEB-INF/config/badminton/badminton-context.xml</param-value>
+  	</init-param>  	 
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>badminton</servlet-name>
+  	<url-pattern>/badminton/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
